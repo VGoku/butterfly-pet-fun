@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enchanted Forest Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'IM Fell English SC', serif;
+      color: #5c4742;
+      background-color: #fdf2f8;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%;
+      height: 100%;
+      background: url('Screenshot%202025-09-04%20130146.png') repeat-x;
+      background-size: cover;
+      animation: moveBackground 180s linear infinite;
+      z-index: -1;
+    }
+    @keyframes moveBackground {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Glitter overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/PRLxZ2X.png') repeat;
+      opacity: 0.3;
+      z-index: -2;
+      animation: sparkleFloat 60s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes sparkleFloat {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 300px; }
+    }
+
+    .butterfly {
+        position: fixed;
+        width: 400px;
+        height: 371px;
+        background: url('https://img1.picmix.com/output/stamp/normal/3/4/7/2/1042743_e47a4.gif') no-repeat;
+        background-size: contain;
+        top: 40%;
+        left: -10%;
+        z-index: 5;
+        animation: moveButterfly 25s linear infinite;
+        transform-origin: center;
+    }
+
+
+
+@keyframes moveButterfly {
+  0% {
+    transform: translateX(-10vw) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(10vw) translateY(-10vh) rotate(10deg);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(90vw) translateY(10vh) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(110vw) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+}
+    .profile-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .profile-box {
+      background: rgba(253, 242, 248, 0.85);
+      border: 1px solid #e7accf;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .box-header {
+      background-color: #d475a8;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.5em;
+      text-align: center;
+      border-radius: 5px;
+      margin: -40px auto 20px;
+      position: relative;
+      width: 80%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    
+    .box-header::before, .box-header::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        border-width: 10px 10px 10px 0;
+        transform: translateY(-50%);
+    }
+
+    .box-header::before {
+        left: -10px;
+        border-right-color: #a35981;
+    }
+
+    .box-header::after {
+        right: -10px;
+        border-left-color: #a35981;
+        border-right-color: transparent;
+        border-width: 10px 0 10px 10px;
+    }
+
+    .user-details-grid {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .user-details-grid .avatar {
+      width: 100px;
+      height: 100px;
+      background: #e6c4d9;
+      border-radius: 5px;
+      border: 2px dashed #d475a8;
+    }
+    
+    .user-details-info p {
+        margin-bottom: 5px;
+    }
+
+    .stats-grid p {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    .stats-grid span {
+        font-weight: bold;
+    }
+
+    .description-content {
+        text-align: center;
+    }
+    
+    .description-content p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .user-pets {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .pet-card {
+      width: 130px;
+      background: rgba(255, 228, 250, 0.85);
+      border: 2px solid pink;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 0 10px lightpink;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pet-card:hover { 
+        transform: scale(1.05); 
+        box-shadow: 0 0 15px hotpink, 0 0 30px hotpink;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 15px hotpink, 0 0 30px hotpink; }
+        50% { box-shadow: 0 0 25px hotpink, 0 0 40px hotpink; }
+        100% { box-shadow: 0 0 15px hotpink, 0 0 30px hotpink; }
+    }
+
+    .pet-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .pet-name {
+      margin-top: 8px;
+      font-size: 1em;
+      color: mediumvioletred;
+      text-align: center;
+    }
+
+    a { color: hotpink; text-decoration: underline wavy; }
+    a:hover {
+        color: #c2185b;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="butterfly" id="butterfly"></div>
+
+  <div class="profile-container">
+    <div class="left-column">
+      <div class="profile-box user-details">
+        <div class="box-header">User Details</div>
+        <div class="user-details-grid">
+            <div class="avatar"></div>
+            <div class="user-details-info">
+                <p><strong>Username:</strong> Cherish</p>
+                <p><strong>Status:</strong> Online</p>
+                <p><strong>Last Seen:</strong> 2025-09-04 11:55:44</p>
+                <p><strong>Joined Date:</strong> 27th Nov 24</p>
+                <p><strong>Referred By:</strong> NOT REFERRED</p>
+            </div>
+        </div>
+      </div>
+      <div class="profile-box stats">
+        <div class="box-header">Stats</div>
+        <div class="stats-grid">
+            <p>Posts: <span>57</span></p>
+            <p>News Likes: <span>89</span></p>
+            <p>Pageviews: <span>284710</span></p>
+            <p>Referrals: <span>86</span></p>
+            <p>Avatars Unlocked: <span>134 / 188</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+        <div class="profile-box description">
+            <div class="box-header">Description</div>
+            <div class="description-content">
+                <p>Hello, I am Cherish, and I'm here to help!</p>
+                <p>As an Admin, I strive to create a welcoming and comfortable space for everyone. Personally, I have a deep love for all things soft, cute, and plant-like when it comes to animals. You'll often find me surrounded by plushies that resemble adorable little sprouts or creatures with leafy ears. My favorite color is undoubtedly pink, and I have a special place in my heart for anything with unicorns!</p>
+                <p>Please feel free to mail me if you need assistance with anything at all.</p>
+                <p>CSS by VG</p>
+            </div>
+        </div>
+        <div class="profile-box user-pets-container">
+            <div class="box-header">User Pets</div>
+            <div class="user-pets">
+              <div class="pet-card"><img src="https://opengameart.org/sites/default/files/styles/medium/public/monster1.png" alt="Cupcake"><div class="pet-name">Cupcake</div></div>
+              <div class="pet-card"><img src="https://opengameart.org/sites/default/files/styles/medium/public/monster2.png" alt="Twinkle"><div class="pet-name">Twinkle</div></div>
+              <div class="pet-card"><img src="https://opengameart.org/sites/default/files/styles/medium/public/monster3.png" alt="Luna"><div class="pet-name">Luna</div></div>
+              <div class="pet-card"><img src="Screenshot%202025-08-30%20183324.png" alt="Blossom"><div class="pet-name">Blossom</div></div>
+              <div class="pet-card"><img src="https://opengameart.org/sites/default/files/styles/medium/public/fox.png" alt="Bubbles"><div class="pet-name">Bubbles</div></div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</body>
+</html>
