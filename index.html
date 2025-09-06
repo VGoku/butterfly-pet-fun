@@ -67,26 +67,25 @@
         transform-origin: center;
     }
 
+    @keyframes moveButterfly {
+      0% {
+        transform: translateX(-10vw) translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        transform: translateX(10vw) translateY(-10vh) rotate(10deg);
+        opacity: 1;
+      }
+      90% {
+        transform: translateX(90vw) translateY(10vh) rotate(-10deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(110vw) translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+    }
 
-
-@keyframes moveButterfly {
-  0% {
-    transform: translateX(-10vw) translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    transform: translateX(10vw) translateY(-10vh) rotate(10deg);
-    opacity: 1;
-  }
-  90% {
-    transform: translateX(90vw) translateY(10vh) rotate(-10deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(110vw) translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-}
     .profile-container {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -102,7 +101,61 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
     }
+
+    /* Glitter particle effects around borders */
+    .glitter-particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ffd700;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      animation: glitter-twinkle 3s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Different colors for variety */
+    .glitter-particle:nth-child(2n) { background: #ff69b4; }
+    .glitter-particle:nth-child(3n) { background: #ff1493; }
+    .glitter-particle:nth-child(4n) { background: #ffd700; }
+    .glitter-particle:nth-child(5n) { background: #ffb6c1; }
+
+    @keyframes glitter-twinkle {
+      0%, 100% { 
+        transform: scale(0.3) rotate(0deg); 
+        opacity: 0.3; 
+      }
+      50% { 
+        transform: scale(1.2) rotate(180deg); 
+        opacity: 1; 
+      }
+    }
+
+    /* Top border particles */
+    .profile-box .glitter-top-1 { top: -8px; left: 20%; animation-delay: 0s; }
+    .profile-box .glitter-top-2 { top: -6px; left: 40%; animation-delay: 0.5s; }
+    .profile-box .glitter-top-3 { top: -8px; left: 60%; animation-delay: 1s; }
+    .profile-box .glitter-top-4 { top: -6px; left: 80%; animation-delay: 1.5s; }
+
+    /* Right border particles */
+    .profile-box .glitter-right-1 { top: 20%; right: -8px; animation-delay: 0.3s; }
+    .profile-box .glitter-right-2 { top: 40%; right: -6px; animation-delay: 0.8s; }
+    .profile-box .glitter-right-3 { top: 60%; right: -8px; animation-delay: 1.3s; }
+    .profile-box .glitter-right-4 { top: 80%; right: -6px; animation-delay: 1.8s; }
+
+    /* Bottom border particles */
+    .profile-box .glitter-bottom-1 { bottom: -8px; left: 20%; animation-delay: 0.6s; }
+    .profile-box .glitter-bottom-2 { bottom: -6px; left: 40%; animation-delay: 1.1s; }
+    .profile-box .glitter-bottom-3 { bottom: -8px; left: 60%; animation-delay: 1.6s; }
+    .profile-box .glitter-bottom-4 { bottom: -6px; left: 80%; animation-delay: 0.1s; }
+
+    /* Left border particles */
+    .profile-box .glitter-left-1 { top: 20%; left: -8px; animation-delay: 0.9s; }
+    .profile-box .glitter-left-2 { top: 40%; left: -6px; animation-delay: 1.4s; }
+    .profile-box .glitter-left-3 { top: 60%; left: -8px; animation-delay: 1.9s; }
+    .profile-box .glitter-left-4 { top: 80%; left: -6px; animation-delay: 0.4s; }
 
     .box-header {
       background-color: #d475a8;
@@ -233,6 +286,24 @@
   <div class="profile-container">
     <div class="left-column">
       <div class="profile-box user-details">
+        <!-- Glitter particles around border -->
+        <div class="glitter-particle glitter-top-1"></div>
+        <div class="glitter-particle glitter-top-2"></div>
+        <div class="glitter-particle glitter-top-3"></div>
+        <div class="glitter-particle glitter-top-4"></div>
+        <div class="glitter-particle glitter-right-1"></div>
+        <div class="glitter-particle glitter-right-2"></div>
+        <div class="glitter-particle glitter-right-3"></div>
+        <div class="glitter-particle glitter-right-4"></div>
+        <div class="glitter-particle glitter-bottom-1"></div>
+        <div class="glitter-particle glitter-bottom-2"></div>
+        <div class="glitter-particle glitter-bottom-3"></div>
+        <div class="glitter-particle glitter-bottom-4"></div>
+        <div class="glitter-particle glitter-left-1"></div>
+        <div class="glitter-particle glitter-left-2"></div>
+        <div class="glitter-particle glitter-left-3"></div>
+        <div class="glitter-particle glitter-left-4"></div>
+
         <div class="box-header">User Details</div>
         <div class="user-details-grid">
             <div class="avatar"></div>
@@ -246,6 +317,24 @@
         </div>
       </div>
       <div class="profile-box stats">
+        <!-- Glitter particles around border -->
+        <div class="glitter-particle glitter-top-1"></div>
+        <div class="glitter-particle glitter-top-2"></div>
+        <div class="glitter-particle glitter-top-3"></div>
+        <div class="glitter-particle glitter-top-4"></div>
+        <div class="glitter-particle glitter-right-1"></div>
+        <div class="glitter-particle glitter-right-2"></div>
+        <div class="glitter-particle glitter-right-3"></div>
+        <div class="glitter-particle glitter-right-4"></div>
+        <div class="glitter-particle glitter-bottom-1"></div>
+        <div class="glitter-particle glitter-bottom-2"></div>
+        <div class="glitter-particle glitter-bottom-3"></div>
+        <div class="glitter-particle glitter-bottom-4"></div>
+        <div class="glitter-particle glitter-left-1"></div>
+        <div class="glitter-particle glitter-left-2"></div>
+        <div class="glitter-particle glitter-left-3"></div>
+        <div class="glitter-particle glitter-left-4"></div>
+
         <div class="box-header">Stats</div>
         <div class="stats-grid">
             <p>Posts: <span>57</span></p>
@@ -258,6 +347,24 @@
     </div>
     <div class="right-column">
         <div class="profile-box description">
+            <!-- Glitter particles around border -->
+            <div class="glitter-particle glitter-top-1"></div>
+            <div class="glitter-particle glitter-top-2"></div>
+            <div class="glitter-particle glitter-top-3"></div>
+            <div class="glitter-particle glitter-top-4"></div>
+            <div class="glitter-particle glitter-right-1"></div>
+            <div class="glitter-particle glitter-right-2"></div>
+            <div class="glitter-particle glitter-right-3"></div>
+            <div class="glitter-particle glitter-right-4"></div>
+            <div class="glitter-particle glitter-bottom-1"></div>
+            <div class="glitter-particle glitter-bottom-2"></div>
+            <div class="glitter-particle glitter-bottom-3"></div>
+            <div class="glitter-particle glitter-bottom-4"></div>
+            <div class="glitter-particle glitter-left-1"></div>
+            <div class="glitter-particle glitter-left-2"></div>
+            <div class="glitter-particle glitter-left-3"></div>
+            <div class="glitter-particle glitter-left-4"></div>
+
             <div class="box-header">Description</div>
             <div class="description-content">
                 <p>Hello, I am Cherish, and I'm here to help!</p>
@@ -267,6 +374,24 @@
             </div>
         </div>
         <div class="profile-box user-pets-container">
+            <!-- Glitter particles around border -->
+            <div class="glitter-particle glitter-top-1"></div>
+            <div class="glitter-particle glitter-top-2"></div>
+            <div class="glitter-particle glitter-top-3"></div>
+            <div class="glitter-particle glitter-top-4"></div>
+            <div class="glitter-particle glitter-right-1"></div>
+            <div class="glitter-particle glitter-right-2"></div>
+            <div class="glitter-particle glitter-right-3"></div>
+            <div class="glitter-particle glitter-right-4"></div>
+            <div class="glitter-particle glitter-bottom-1"></div>
+            <div class="glitter-particle glitter-bottom-2"></div>
+            <div class="glitter-particle glitter-bottom-3"></div>
+            <div class="glitter-particle glitter-bottom-4"></div>
+            <div class="glitter-particle glitter-left-1"></div>
+            <div class="glitter-particle glitter-left-2"></div>
+            <div class="glitter-particle glitter-left-3"></div>
+            <div class="glitter-particle glitter-left-4"></div>
+
             <div class="box-header">User Pets</div>
             <div class="user-pets">
               <div class="pet-card"><img src="https://i.pinimg.com/564x/3e/7e/2a/3e7e2a87abf57da3dcea23e34bb984aa.jpg" alt="Cupcake"><div class="pet-name">Cupcake</div></div>
